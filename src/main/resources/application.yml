@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: taco_app
+  datasource:
+    name: tacocloud

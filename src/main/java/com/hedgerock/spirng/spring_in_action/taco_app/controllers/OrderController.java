@@ -1,5 +1,6 @@
 package com.hedgerock.spirng.spring_in_action.taco_app.controllers;
 
+import com.hedgerock.spirng.spring_in_action.taco_app.data.order_repository.OrderRepository;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Taco;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.TacoOrder;
@@ -22,6 +23,12 @@ import static com.hedgerock.spirng.spring_in_action.taco_app.utl.ControllerUtil.
 @Slf4j
 @SessionAttributes("tacoOrder")
 public class OrderController {
+
+    private final OrderRepository orderRepository;
+
+    public OrderController(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
     @GetMapping("/current")
     public String orderForm(
@@ -46,7 +53,7 @@ public class OrderController {
             return orderForm(model);
         }
 
-        log.info("Order submitted: {}", tacoOrder);
+        this.orderRepository.saveTacoOrder(tacoOrder);
         sessionStatus.setComplete();
         return "redirect:/";
     }
