@@ -1,5 +1,6 @@
 package com.hedgerock.spirng.spring_in_action.taco_app.controllers;
 
+import com.hedgerock.spirng.spring_in_action.taco_app.data.ingredients_repository.IngredientsRepository;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients.Type;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Taco;
@@ -11,10 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.stream.StreamSupport;
 
-import static com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients.Type.*;
 import static com.hedgerock.spirng.spring_in_action.taco_app.utl.ControllerUtil.HOME_HTML;
 import static com.hedgerock.spirng.spring_in_action.taco_app.utl.ControllerUtil.initPageAttributes;
 
@@ -24,22 +23,17 @@ import static com.hedgerock.spirng.spring_in_action.taco_app.utl.ControllerUtil.
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
+    private final IngredientsRepository ingredientsRepository;
+
+    public DesignTacoController(IngredientsRepository ingredientsRepository) {
+        this.ingredientsRepository = ingredientsRepository;
+    }
+
     @ModelAttribute
     public void addIngredientsToModel(
             Model model
     ) {
-        List<Ingredients>ingredients = Arrays.asList(
-                new Ingredients("FLTO", "Flour Tortilla", WRAP),
-                new Ingredients("COTO", "Corn Tortilla", WRAP),
-                new Ingredients("GRBF", "Ground Beef", PROTEIN),
-                new Ingredients("CARN", "Carnitas", PROTEIN),
-                new Ingredients("TMTO", "Diced Tomatoes", VEGETABLES),
-                new Ingredients("LETC", "Lettuce", VEGETABLES),
-                new Ingredients("CHED", "Cheddar", CHEESE),
-                new Ingredients("JACK", "Monterrey Jack", CHEESE),
-                new Ingredients("SLSA", "Salsa", SAUCE),
-                new Ingredients("SRCR", "Sour Cream", SAUCE)
-        );
+        Iterable<Ingredients>ingredients = this.ingredientsRepository.findAllIngredients();
 
         Type[] types = Type.values();
 
@@ -81,14 +75,12 @@ public class DesignTacoController {
         tacoOrder.addTaco(taco);
         log.info("Processing taco:{}", taco);
 
-
-
         return "redirect:/orders/current";
     }
 
-    private Iterable<Ingredients>filterByType(List<Ingredients> ingredients, Type type) {
+    private Iterable<Ingredients>filterByType(Iterable<Ingredients> ingredients, Type type) {
 
-        return ingredients.stream()
+        return StreamSupport.stream(ingredients.spliterator(), false)
                 .filter(ingredient -> ingredient.getType().equals(type))
                 .toList();
     }

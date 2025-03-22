@@ -7,11 +7,16 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class TacoOrder {
+
+    private Long id;
+
+    private LocalDate createdAt;
 
     @NotBlank(message = "Name of receiver is required")
     private String deliveryName;
