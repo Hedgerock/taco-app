@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <th:block th:fragment="tacosList" th:with="location='main_templates/order_page/util_comp/'">
+
+        <ul
+                class="ordered-tacos-list"
+                th:with="emptyBoxPath=${location + 'empty-box'}, curTacoOrderPath=${location + 'current-taco-list-view'}"
+        >
+
+            <li
+                    th:each="taco,stat:${tacoOrder.tacos}"
+                    class="ordered-tacos-list__item"
+            >
+                <div class="nail"></div>
+                <ul th:replace="~{${curTacoOrderPath}::currentTacoList (taco=${taco}, stat=${stat})}"></ul>
+                <div class="nail"></div>
+            </li>
+
+            <li
+                    th:if="${#lists.isEmpty(tacoOrder.tacos)}"
+                    th:insert="~{${emptyBoxPath}::emptyBox}"
+                    class="ordered-tacos-list__item ordered-tacos-list__item_empty">
+            </li>
+
+        </ul>
+
+    </th:block>
+</body>
+</html>

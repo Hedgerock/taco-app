@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div
+          th:fragment="ingredientGroup (title, list, id)"
+          class="ingredient-group"
+          th:id="${ id }"
+  >
+    <h3
+            class="ingredient-group__title"
+            th:text="${ title }">
+    </h3>
+
+    <label
+            class="ingredient-group-label"
+            th:each="iterator,stat:${ list }">
+      <input
+             th:field="*{ingredients}"
+             th:type="'checkbox'"
+             th:name="${ list }"
+             th:value="${ iterator.id }"
+      >
+      <span
+              th:if="${#fields.hasErrors('ingredients')}"
+              class="validation-error"
+              th:errors="*{ingredients}"
+      ></span>
+      <span
+              class="ingredient-group__value"
+              th:text="${ iterator.name + ' ingredient' }">
+      </span>
+    </label>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <ul class="taco-list" th:fragment="currentTacoList (taco, stat)">
+    <li class="taco-list__item">
+
+      <div class="taco-box-content" th:data-title="${taco.name}">
+
+        <h3 class="taco-box-content__title">Ingredients:</h3>
+
+        <div class="ingredients-box-container">
+
+          <div th:each="ingr,stat:${taco.ingredients}" class="ingredient-box" th:title="${ingr.name}">
+            <div th:replace="~{util_templates/type-logo::typeLogo (type = ${ingr.type})}"></div>
+            <span class="ingredient-box__value" th:text="${ stat.index + 1 + '.' }"></span>
+            <span class="ingredient-box__value" th:text="${ ingr.name }"></span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </li>
+  </ul>
+</body>
+</html>

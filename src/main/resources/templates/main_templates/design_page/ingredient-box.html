@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="grid" th:fragment="ingredientBoxView" th:with="ingrPath='util_templates/ingredient-group-view'">
+        <div
+                th:replace="~{${ingrPath}::ingredientGroup (
+                            title='Designate your wrap',
+                            list=${wrap},
+                            id='wrap')}">
+        </div>
+        <div
+                th:replace="~{${ingrPath}::ingredientGroup (
+                            title='Designate your protein',
+                            list=${protein},
+                            id='proteins')}">
+        </div>
+        <div
+                th:replace="~{${ingrPath}::ingredientGroup (
+                            title='Designate your vegetables',
+                            list=${vegetables},
+                            id='vegetables')}">
+        </div>
+        <div
+                th:replace="~{${ingrPath}::ingredientGroup (
+                            title='Designate your cheeses',
+                            list=${cheese},
+                            id='cheeses')}">
+        </div>
+        <div
+                th:replace="~{${ingrPath}::ingredientGroup (
+                            title='Designate your sauses',
+                            list=${sauce},
+                            id='sauses')}">
+        </div>
+    </div>
+</body>
+</html>

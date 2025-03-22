@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="headerView" th:with="templatePath=${ 'util_templates/link-template' }">
+        <a
+                th:replace="~{${ templatePath }::linkTemplate (
+                    path = '/',
+                    title = 'Main',
+                    isCurPlace = ${ pageName == 'main' }
+                )}">
+        </a>
+
+        <a
+                th:replace="~{${ templatePath }::linkTemplate (
+                    path = '/design',
+                    title = 'Design',
+                    isCurPlace = ${ pageName == 'design' }
+                )}">
+        </a>
+    </header>
+</body>
+</html>

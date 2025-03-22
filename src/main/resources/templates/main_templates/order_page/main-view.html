@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+    <th:block
+            th:fragment="mainView"
+            th:with="curFolderPath=${ 'main_templates/order_page/' }"
+    >
+        <h1 class="design-title">Order your taco creations</h1>
+
+        <form
+                class="orders-form"
+                th:action="@{/orders}"
+                method="post"
+                th:object="${tacoOrder}"
+                th:with="
+                    listPath=${curFolderPath + 'util_comp/ordered-tacos-list'},
+                    deliveryPath=${curFolderPath + 'fields/delivery-fields'},
+                    paymentPath=${curFolderPath + 'fields/payment-fields'},
+                    isTacosEmpty = ${#lists.isEmpty(tacoOrder.tacos)}
+                "
+        >
+            <div class="taco-order-container" th:if="${ !isTacosEmpty }">
+                <div th:replace="~{util_templates/logo::logoView}"></div>
+                <div th:replace="~{${deliveryPath}::deliveryBox}"></div>
+                <div th:replace="~{${paymentPath}::paymentBox}"></div>
+            </div>
+
+            <div class="orders-box">
+                <h3
+                        th:if="${!isTacosEmpty}"
+                        th:text="${ 'Your ' + 'taco' + (#lists.size(tacoOrder.tacos) > 1 ? 's' : '') + ' in this order:' }">
+                </h3>
+                <ul th:replace="~{${listPath}::tacosList}"></ul>
+            </div>
+
+        </form>
+    </th:block>
+</body>
+</html>

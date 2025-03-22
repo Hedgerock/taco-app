@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <th:block th:fragment="linkTemplate (path, title, isCurPlace)">
+      <a
+              th:if="${ !isCurPlace }"
+              th:href="${ path }"
+              th:text="${ title }">
+      </a>
+      <span
+              th:if="${ isCurPlace }"
+              th:text="${ title }"
+      >
+      </span>
+  </th:block>
+</body>
+</html>

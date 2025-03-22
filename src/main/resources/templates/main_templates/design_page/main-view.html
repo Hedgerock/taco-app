@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <th:block th:fragment="mainView">
+        <h1 class="design-title">Design your taco</h1>
+
+        <form
+                action="/design"
+                method="post"
+                class="application-form"
+                th:object="${taco}"
+        >
+            <div class="application-form-header">
+                <div th:replace="~{util_templates/logo::logoView}"></div>
+
+                <div class="taco-name-box">
+                    <label class="application-form-label">
+                        <span class="application-form-label__value">Name your taco</span>
+                        <input
+                                th:field="*{name}"
+                                type="text"
+                                placeholder="Your taco's name"
+                        />
+                        <span
+                                th:if="${#fields.hasErrors('name')}"
+                                class="validation-error"
+                                th:errors="*{name}"
+                        ></span>
+                    </label>
+                    <button type="submit">Submit your taco</button>
+                </div>
+            </div>
+
+            <div
+                    th:replace="~{main_templates/design_page/ingredient-box::ingredientBoxView}">
+            </div>
+        </form>
+    </th:block>
+</body>
+</html>
