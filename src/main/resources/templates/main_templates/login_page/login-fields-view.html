@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div
+        class="form-fields"
+        th:fragment="loginFields"
+>
+
+    <fieldset th:replace="~{form_fields/login_fields::loginFields}"></fieldset>
+
+    <script th:src="@{/js/form_fields_scripts/main.js}"></script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <th:block th:fragment="deliveryBoxFields">
+        <label class="form-fields-label">
+            <span class="form-fields-label__field-name">Name:</span>
+            <input type="text" th:field="*{deliveryName}" class="form-fields__current-input"/>
+            <span
+                    th:if="${#fields.hasErrors('deliveryName')}"
+                    class="validation-error"
+                    th:errors="*{deliveryName}"
+            ></span>
+        </label>
+
+        <label class="form-fields-label">
+            <span class="form-fields-label__field-name">Street:</span>
+            <input type="text" th:field="*{deliveryStreet}" class="form-fields__current-input"/>
+            <span
+                    th:if="${#fields.hasErrors('deliveryStreet')}"
+                    class="validation-error"
+                    th:errors="*{deliveryStreet}"
+            ></span>
+        </label>
+
+        <label class="form-fields-label">
+            <span class="form-fields-label__field-name">City:</span>
+            <input type="text" th:field="*{deliveryCity}" class="form-fields__current-input"/>
+            <span
+                    th:if="${#fields.hasErrors('deliveryCity')}"
+                    class="validation-error"
+                    th:errors="*{deliveryCity}"
+            ></span>
+        </label>
+
+        <label class="form-fields-label">
+            <span class="form-fields-label__field-name">State:</span>
+            <input type="text" th:field="*{deliveryState}" class="form-fields__current-input"/>
+            <span
+                    th:if="${#fields.hasErrors('deliveryState')}"
+                    class="validation-error"
+                    th:errors="*{deliveryState}"
+            ></span>
+        </label>
+        <label class="form-fields-label">
+            <span class="form-fields-label__field-name">Zip code:</span>
+            <input type="text" th:field="*{deliveryZip}" class="form-fields__current-input"/>
+            <span
+                    th:if="${#fields.hasErrors('deliveryZip')}"
+                    class="validation-error"
+                    th:errors="*{deliveryZip}"
+            ></span>
+        </label>
+    </th:block>
+</body>
+</html>

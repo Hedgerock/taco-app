@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="card-validation-info" th:fragment="cardValidationInfo">
+        <label class="card-validation-info-label">
+            <span class="card-validation-info-label__field-name">Expiration date:</span>
+            <input type="text"
+                   maxlength="5"
+                   th:field="*{creditCardExpirationDate}"
+                   class="form-fields__current-input form-fields__current-input_expiration-date"
+            />
+            <span
+                    th:if="${#fields.hasErrors('creditCardExpirationDate')}"
+                    class="validation-error"
+                    th:errors="*{creditCardExpirationDate}"
+            ></span>
+        </label>
+
+        <label class="card-validation-info-label">
+            <span>Cvv:</span>
+            <input
+                    type="password"
+                    th:field="*{creditCardCvv}" class="form-fields__current-input form-fields__current-input_cvv"
+                    maxlength="3"
+            />
+            <span
+                    th:if="${#fields.hasErrors('creditCardCvv')}"
+                    class="validation-error"
+                    th:errors="*{creditCardCvv}"
+            ></span>
+        </label>
+    </div>
+</body>
+</html>

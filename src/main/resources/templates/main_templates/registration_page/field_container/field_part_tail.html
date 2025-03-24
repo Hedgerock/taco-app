@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="field-part field-part_tail" th:fragment="fieldPartTail">
+    <div
+            class="form-fields">
+        <fieldset
+                th:replace="~{form_fields/signup_fields/user_details_third_part::userDetailsThirdPart}">
+        </fieldset>
+    </div>
+
+    <div class="options">
+        <button class="options__button" type="submit">Sign up</button>
+    </div>
+</div>
+</div>
+</body>
+</html>

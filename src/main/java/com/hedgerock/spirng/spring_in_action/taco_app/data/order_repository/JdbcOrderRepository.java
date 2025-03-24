@@ -109,12 +109,12 @@ public class JdbcOrderRepository implements OrderRepository {
         Long tacoId = keyHolder.getKey().longValue();
         taco.setId(tacoId);
 
-        saveIngredientsRef(tacoId, taco.getIngredientRefs());
+        saveIngredientsRef(tacoId, taco.getIngredients());
 
         return tacoId;
     }
 
-    private void saveIngredientsRef(Long id, List<IngredientRef> ingredients) {
+    private void saveIngredientsRef(Long id, List<Ingredients> ingredients) {
 
         int key = 0;
         String sql = "INSERT INTO ingredient_ref " +
@@ -122,8 +122,8 @@ public class JdbcOrderRepository implements OrderRepository {
                 "VALUES " +
                 "(?, ?, ?)";
 
-        for(IngredientRef ingredientRef: ingredients) {
-            this.jdbcOperations.update(sql, ingredientRef.getIngredient(), id, key++);
+        for(Ingredients ingredientRef: ingredients) {
+            this.jdbcOperations.update(sql, ingredientRef.getId(), id, key++);
         }
     }
 

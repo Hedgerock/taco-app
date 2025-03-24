@@ -75,6 +75,10 @@ header, footer {
 
 }
 
+header {
+    justify-content: space-between;
+}
+
 header, main, footer {
     padding: 0 1rem;
 }
@@ -110,10 +114,19 @@ footer {
     text-align: center;
 }
 
+.header-list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
 .image {
     display: block;
     width: 300px;
     height: 300px;
+
+    min-width: 300px;
 
     filter: drop-shadow(2px 4px 6px black);
 
@@ -250,10 +263,6 @@ footer {
     gap: 2rem;
 }
 
-.form-fields:last-child {
-    margin-left: 4%;
-}
-
 .form-fields h3,
 .orders-form h3 {
     font-size: 1.5rem;
@@ -279,7 +288,7 @@ footer {
 .form-fields-label__field-name {
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 1rem;
 
     transform: translateY(-50%);
 
@@ -569,4 +578,105 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.authentication-block {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 200;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    height: 80%;
+}
+
+.authentication-form {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: .6rem;
+
+    border-radius: 1.5rem;
+    padding: .5rem;
+
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    gap: .5rem;
+
+    display: flex;
+    gap: .5rem;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+
+    background: linear-gradient(rgba(0,0,0, .2), rgba(0,0,0, .2));
+
+    border-radius: 2rem;
+    padding: .5rem 0 0 0;
+}
+
+.content .image {
+    align-self: center;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.options__button,
+.options__link {
+    font-size: 1.2rem;
+    color: var(--mainRevTxtClr);
+    border: 2px solid var(--mainRevTxtClr);
+    padding: .3rem 1.5rem;
+    text-align: center;
+    background: var(--mainBgClr);
+    border-radius: 1rem;
+}
+
+.field-container,
+.field-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-part_start .options {
+    align-self: flex-start;
+}
+
+.field-part_center {
+    align-items: center;
+    flex-direction: row;
+}
+
+.field-part_tail .options {
+    align-self: flex-end;
+}
+
+.field-part_start, 
+.field-part_tail {
+    gap: 1.5rem;
 }

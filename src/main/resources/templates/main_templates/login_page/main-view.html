@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="authentication-block" th:fragment="mainView">
+        <form
+                class="authentication-form"
+                th:action="@{/login}" method="post"
+        >
+            <div class="content">
+                <div th:replace="~{util_templates/logo::logoView}"></div>
+
+                <div class="form-content">
+                    <fieldset
+                            th:replace="~{main_templates/login_page/login-fields-view::loginFields}">
+                    </fieldset>
+
+                    <div class="options">
+                        <button class="options__button" type="submit">Sign in</button>
+                        <a class="options__link" href="/register">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

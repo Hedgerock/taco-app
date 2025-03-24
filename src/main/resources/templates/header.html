@@ -2,21 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
     <header th:fragment="headerView" th:with="templatePath=${ 'util_templates/link-template' }">
-        <a
-                th:replace="~{${ templatePath }::linkTemplate (
+        <ul class="header-list">
+            <li class="header-list-item">
+                <a
+                        class="header-list-item__link"
+                        th:replace="~{${ templatePath }::linkTemplate (
                     path = '/',
                     title = 'Main',
                     isCurPlace = ${ pageName == 'main' }
                 )}">
-        </a>
-
-        <a
-                th:replace="~{${ templatePath }::linkTemplate (
+                </a>
+            </li>
+            <li class="header-list-item">
+                <a
+                        class="header-list-item__link"
+                        th:replace="~{${ templatePath }::linkTemplate (
                     path = '/design',
                     title = 'Design',
                     isCurPlace = ${ pageName == 'design' }
                 )}">
-        </a>
+                </a>
+            </li>
+        </ul>
+
+        <div class="authorized-user-content">
+            <form
+                    th:action="@{/logout}"
+                    method="post"
+                    class="user-logout-form"
+            >
+                <button type="submit">Logout</button>
+            </form>
+        </div>
     </header>
 </body>
 </html>

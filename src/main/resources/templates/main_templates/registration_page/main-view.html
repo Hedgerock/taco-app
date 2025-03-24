@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="authentication-block" th:fragment="mainView">
+        <form
+                class="authentication-form"
+                method="post"
+                th:action="@{/register}"
+                id="registerForm"
+        >
+
+            <div class="content">
+                <div
+                        th:replace="~{main_templates/registration_page/field_container/main-view::mainView}">
+                </div>
+            </div>
+
+        </form>
+
+        <script th:src="@{/js/form_fields_scripts/main.js}"></script>
+    </div>
+</body>
+</html>

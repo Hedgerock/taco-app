@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+  <div class="field-container" th:fragment="mainView">
+
+    <div th:replace="~{main_templates/registration_page/field_container/field_part_start_part::fieldPartStart}"></div>
+    <div th:replace="~{main_templates/registration_page/field_container/field_part_center::fieldPartCenter}"></div>
+    <div th:replace="~{main_templates/registration_page/field_container/field_part_tail::fieldPartTail}"></div>
+
+  </div>
+
+</body>
+</html>

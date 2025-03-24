@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="field-part field-part_start" th:fragment="fieldPartStart">
+        <div class="options">
+            <a class="options__link" th:href="@{/login}"><- Back to Sign in</a>
+        </div>
+        <div
+                class="form-fields">
+            <fieldset th:replace="~{form_fields/signup_fields/auth_details::authDetails}"></fieldset>
+        </div>
+    </div>
+</body>
+</html>
