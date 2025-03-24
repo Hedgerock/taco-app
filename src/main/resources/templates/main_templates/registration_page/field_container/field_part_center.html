@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div class="field-part field-part_center" th:fragment="fieldPartCenter">
+    <div
+            class="form-fields">
+      <fieldset th:replace="~{form_fields/signup_fields/user_details_first_part::userDetailsFirstPart}"></fieldset>
+    </div>
+    <div th:replace="~{util_templates/logo::logoView}"></div>
+    <div
+            class="form-fields">
+      <fieldset th:replace="~{form_fields/signup_fields/user_details_second_part::userDetailsSecondPart}"></fieldset>
+    </div>
+  </div>
+</body>
+</html>

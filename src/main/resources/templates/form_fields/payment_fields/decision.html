@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="decision" th:fragment="decision">
+        <a
+                th:if="${!isTacosEmpty}"
+                th:href="@{/design}" id="another"
+                class="orders-box__link"
+                title="Create one more taco?"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </a>
+
+        <button>Submit order</button>
+    </div>
+</body>
+</html>

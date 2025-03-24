@@ -3,3 +3,5 @@ spring:
     name: taco_app
   datasource:
     name: tacocloud
+  jpa:
+    open-in-view: false

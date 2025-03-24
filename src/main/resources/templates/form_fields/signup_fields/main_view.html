@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <th:block th:fragment="mainView">
+        <fieldset th:replace="~{form_fields/signup_fields/auth_details::authDetails}"></fieldset>
+        <fieldset th:replace="~{form_fields/signup_fields/user_details_first_part::userDetailsFirstPart}"></fieldset>
+        <fieldset th:replace="~{form_fields/signup_fields/user_details_second_part::userDetailsSecondPart}"></fieldset>
+        <fieldset th:replace="~{form_fields/signup_fields/user_details_third_part::userDetailsThirdPart}"></fieldset>
+    </th:block>
+</body>
+</html>
