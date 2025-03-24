@@ -1,4 +1,4 @@
-package com.hedgerock.spirng.spring_in_action.taco_app.security;
+package com.hedgerock.spirng.spring_in_action.taco_app.config;
 
 import com.hedgerock.spirng.spring_in_action.taco_app.data.security_repository.UserRepository;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.security.User;
@@ -28,6 +28,7 @@ public class SecurityConfig {
             if (user != null) {
                 return user;
             }
+
             throw new UsernameNotFoundException("User " + username + " not found");
         };
     }

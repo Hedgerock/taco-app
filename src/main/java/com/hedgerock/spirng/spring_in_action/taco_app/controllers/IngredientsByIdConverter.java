@@ -16,6 +16,6 @@ public class IngredientsByIdConverter implements Converter<String, Ingredients> 
 
     @Override
     public Ingredients convert(String id) {
-        return this.ingredientsRepository.findIngredientById(id).orElse(null);
+        return this.ingredientsRepository.findById(id).orElse(null);
     }
 }

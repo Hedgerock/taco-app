@@ -1,13 +1,11 @@
 package com.hedgerock.spirng.spring_in_action.taco_app.data.order_repository;
 
-import com.hedgerock.spirng.spring_in_action.taco_app.model.IngredientRef;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Taco;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.TacoOrder;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Types;
@@ -15,8 +13,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-@Repository
-public class JdbcOrderRepository implements OrderRepository {
+
+public class JdbcOrderRepository {
 
     private final JdbcOperations jdbcOperations;
 
@@ -24,14 +22,13 @@ public class JdbcOrderRepository implements OrderRepository {
         this.jdbcOperations = jdbcOperations;
     }
 
-    @Override
     @Transactional
     public TacoOrder saveTacoOrder(TacoOrder tacoOrder) {
         String sql = "INSERT INTO taco_order " +
                 "(" +
                 "delivery_name, delivery_street, delivery_city, " +
                 "delivery_state, delivery_zip, credit_card_number, " +
-                "credit_card_expiration_date, credit_card_cvv, placed_at" +
+                "credit_card_expiration_date, credit_card_cvv, created_at" +
                 ") " +
                 "VALUES " +
                 "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -92,12 +89,12 @@ public class JdbcOrderRepository implements OrderRepository {
         );
 
         prepareStatementFactory.setReturnGeneratedKeys(true);
-        taco.setCratedAt(LocalDate.now());
+        taco.setCreatedAt(LocalDate.now());
 
         var prepareStatementCreator = prepareStatementFactory.newPreparedStatementCreator(
                 Arrays.asList(
                         taco.getName(),
-                        taco.getCratedAt(),
+                        taco.getCreatedAt(),
                         orderId,
                         orderKey
                 )

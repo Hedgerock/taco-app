@@ -4,7 +4,8 @@
     <th:block th:fragment="paymentFieldsMainView">
         <label class="form-fields-label">
             <span class="form-fields-label__field-name form-fields-label__field-name_inactive">Card number:</span>
-            <input type="text" th:field="*{creditCardNumber}"
+            <input type="text"
+                   th:field="*{creditCardNumber}"
                    maxlength="20"
                    class="form-fields__current-input form-fields__current-input_credit-card"
             />

@@ -4,15 +4,15 @@ import com.hedgerock.spirng.spring_in_action.taco_app.data.order_repository.Orde
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Taco;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.TacoOrder;
+import com.hedgerock.spirng.spring_in_action.taco_app.model.security.User;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import static com.hedgerock.spirng.spring_in_action.taco_app.utl.ControllerUtil.HOME_HTML;
@@ -29,6 +29,7 @@ public class OrderController {
     public OrderController(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
+
 
     @GetMapping("/current")
     public String orderForm(
@@ -47,13 +48,16 @@ public class OrderController {
             @Valid TacoOrder tacoOrder,
             BindingResult bindingResult,
             SessionStatus sessionStatus,
+            @AuthenticationPrincipal User user,
             Model model
     ) {
         if (bindingResult.hasErrors()) {
             return orderForm(model);
         }
 
-        this.orderRepository.saveTacoOrder(tacoOrder);
+        tacoOrder.setUser(user);
+
+        this.orderRepository.save(tacoOrder);
         sessionStatus.setComplete();
         return "redirect:/";
     }

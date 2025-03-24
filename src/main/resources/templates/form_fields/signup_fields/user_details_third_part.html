@@ -4,12 +4,12 @@
   <th:block th:fragment="userDetailsThirdPart">
       <label class="form-fields-label">
         <span class="form-fields-label__field-name">Zip:</span>
-        <input type="text" class="form-fields__current-input" />
+        <input type="text" class="form-fields__current-input" th:field="*{zip}"/>
       </label>
 
       <label class="form-fields-label">
         <span class="form-fields-label__field-name">Phone number:</span>
-        <input type="text" class="form-fields__current-input" />
+        <input type="text" class="form-fields__current-input" th:field="*{phoneNumber}"/>
       </label>
   </th:block>
 </body>

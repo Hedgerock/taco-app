@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,13 +29,13 @@ public class RegistrationController {
     public String registerForm(
             Model model
     ) {
-
+        model.addAttribute("registrationForm", new RegistrationForm());
         initPageAttributes(model, "Registration", "registration");
         return HOME_HTML;
     }
 
     @PostMapping
-    public String processRegistration(RegistrationForm registrationForm) {
+    public String processRegistration(@ModelAttribute RegistrationForm registrationForm) {
         this.userRepository.save(registrationForm.toUser(this.passwordEncoder));
 
         return "redirect:/login";

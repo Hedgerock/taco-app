@@ -4,7 +4,11 @@
     <th:block th:fragment="deliveryBoxFields">
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Name:</span>
-            <input type="text" th:field="*{deliveryName}" class="form-fields__current-input"/>
+            <input
+                    type="text"
+                    th:field="*{deliveryName}"
+                    class="form-fields__current-input"
+            />
             <span
                     th:if="${#fields.hasErrors('deliveryName')}"
                     class="validation-error"
@@ -14,7 +18,11 @@
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Street:</span>
-            <input type="text" th:field="*{deliveryStreet}" class="form-fields__current-input"/>
+            <input
+                    type="text"
+                    th:field="*{deliveryStreet}"
+                    class="form-fields__current-input"
+            />
             <span
                     th:if="${#fields.hasErrors('deliveryStreet')}"
                     class="validation-error"
@@ -24,7 +32,11 @@
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">City:</span>
-            <input type="text" th:field="*{deliveryCity}" class="form-fields__current-input"/>
+            <input
+                    type="text"
+                    th:field="*{deliveryCity}"
+                    class="form-fields__current-input"
+            />
             <span
                     th:if="${#fields.hasErrors('deliveryCity')}"
                     class="validation-error"
@@ -34,7 +46,11 @@
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">State:</span>
-            <input type="text" th:field="*{deliveryState}" class="form-fields__current-input"/>
+            <input
+                    type="text"
+                    th:field="*{deliveryState}"
+                    class="form-fields__current-input"
+            />
             <span
                     th:if="${#fields.hasErrors('deliveryState')}"
                     class="validation-error"
@@ -43,7 +59,11 @@
         </label>
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Zip code:</span>
-            <input type="text" th:field="*{deliveryZip}" class="form-fields__current-input"/>
+            <input
+                    type="text"
+                    th:field="*{deliveryZip}"
+                    class="form-fields__current-input"
+            />
             <span
                     th:if="${#fields.hasErrors('deliveryZip')}"
                     class="validation-error"
