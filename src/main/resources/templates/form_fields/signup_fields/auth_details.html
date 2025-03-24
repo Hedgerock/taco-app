@@ -4,17 +4,17 @@
     <th:block th:fragment="authDetails">
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Username:</span>
-            <input type="text" class="form-fields__current-input" />
+            <input type="text" class="form-fields__current-input" th:field="*{username}"/>
         </label>
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Password:</span>
-            <input type="password" class="form-fields__current-input" />
+            <input type="password" class="form-fields__current-input" th:field="*{password}"/>
         </label>
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">Confirm password:</span>
-            <input type="password" class="form-fields__current-input" />
+            <input type="password" class="form-fields__current-input" th:field="*{confirmPassword}"/>
         </label>
     </th:block>
 </body>

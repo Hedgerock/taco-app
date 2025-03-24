@@ -4,12 +4,12 @@
     <th:block th:fragment="userDetailsSecondPart">
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">City:</span>
-            <input type="text" class="form-fields__current-input" />
+            <input type="text" class="form-fields__current-input" th:field="*{city}"/>
         </label>
 
         <label class="form-fields-label">
             <span class="form-fields-label__field-name">State:</span>
-            <input type="text" class="form-fields__current-input" />
+            <input type="text" class="form-fields__current-input" th:field="*{state}"/>
         </label>
     </th:block>
 </body>

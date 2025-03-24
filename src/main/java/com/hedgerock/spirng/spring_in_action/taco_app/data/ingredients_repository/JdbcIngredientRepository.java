@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class JdbcIngredientRepository implements IngredientsRepository {
+
+public class JdbcIngredientRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -18,14 +18,12 @@ public class JdbcIngredientRepository implements IngredientsRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
     public Iterable<Ingredients> findAllIngredients() {
         String sql = "SELECT * FROM ingredients";
 
         return this.jdbcTemplate.query(sql, this::mapRowToIngredients);
     }
 
-    @Override
     public Optional<Ingredients> findIngredientById(String id) {
         String sql = "SELECT * FROM ingredients WHERE id = ?";
 
@@ -37,7 +35,6 @@ public class JdbcIngredientRepository implements IngredientsRepository {
                 : Optional.of(ingredients.get(0));
     }
 
-    @Override
     public Ingredients saveIngredient(Ingredients ingredient) {
         String sql = "INSERT INTO ingredients (id, name, type) VALUES (?, ?, ?)";
 

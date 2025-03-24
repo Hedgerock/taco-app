@@ -5,8 +5,12 @@ import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Ingredients.Type;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.Taco;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.TacoOrder;
+import com.hedgerock.spirng.spring_in_action.taco_app.model.security.User;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,7 +37,7 @@ public class DesignTacoController {
     public void addIngredientsToModel(
             Model model
     ) {
-        Iterable<Ingredients>ingredients = this.ingredientsRepository.findAllIngredients();
+        Iterable<Ingredients>ingredients = this.ingredientsRepository.findAll();
 
         Type[] types = Type.values();
 
@@ -49,8 +53,13 @@ public class DesignTacoController {
     }
 
     @ModelAttribute
-    public TacoOrder tacoOrder() {
-        return new TacoOrder();
+    public TacoOrder tacoOrder(
+            @AuthenticationPrincipal User user
+    ) {
+        TacoOrder tacoOrder = new TacoOrder();
+        tacoOrder.insertAuthorizedUserDetails(user);
+
+        return tacoOrder;
     }
 
     @GetMapping

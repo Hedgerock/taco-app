@@ -1,7 +1,28 @@
 spring:
+  data:
+    rest:
+      base-path: /data-api
   application:
-    name: taco_app
+      name: taco_app
   datasource:
     name: tacocloud
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
   jpa:
     open-in-view: false
+
+taco:
+  orders:
+    pageSize: 10
+
+discount:
+  codes:
+    abcdef:
+      10spring:
+
+security:
+  user:
+    name: hedgerock
+    password: 1234
