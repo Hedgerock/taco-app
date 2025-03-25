@@ -1,6 +1,7 @@
-package com.hedgerock.spirng.spring_in_action.taco_app.api;
+package com.hedgerock.spirng.spring_in_action.taco_app.controllers.api;
 
 import com.hedgerock.spirng.spring_in_action.taco_app.data.rest_repositories.TacoOrderRepository;
+import com.hedgerock.spirng.spring_in_action.taco_app.message_brokers.jms_artemis.JmsOrderMessagingService;
 import com.hedgerock.spirng.spring_in_action.taco_app.model.TacoOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class TacoOrderRestController {
 
     private final TacoOrderRepository repository;
+    private final JmsOrderMessagingService messagingService;
 
-    public TacoOrderRestController(TacoOrderRepository repository) {
+    public TacoOrderRestController(TacoOrderRepository repository, JmsOrderMessagingService messagingService) {
         this.repository = repository;
+        this.messagingService = messagingService;
     }
 
     @GetMapping(produces = "application/json")
@@ -26,7 +29,7 @@ public class TacoOrderRestController {
     public TacoOrder postOrder(
             @RequestBody TacoOrder tacoOrder
     ) {
-
+        this.messagingService.sendOrder(tacoOrder);
         return this.repository.save(tacoOrder);
     }
 

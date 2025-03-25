@@ -1,4 +1,4 @@
-package com.hedgerock.spirng.spring_in_action.taco_app.api;
+package com.hedgerock.spirng.spring_in_action.taco_app.controllers.api;
 
 import com.hedgerock.spirng.spring_in_action.taco_app.data.rest_repositories.TacoCrudRepository;
 import com.hedgerock.spirng.spring_in_action.taco_app.data.rest_repositories.TacoRepository;
