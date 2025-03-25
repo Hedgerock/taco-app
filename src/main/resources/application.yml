@@ -6,12 +6,40 @@ spring:
       name: taco_app
   datasource:
     name: tacocloud
-    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:testdb;
     driver-class-name: org.h2.Driver
     username: sa
     password: password
   jpa:
     open-in-view: false
+  artemis:
+    broker-url: tcp://artemis.tacocloud.com:61616
+    user: tacoweb
+    password: sizam600
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
+
+#  rabbitmq:
+#    host: rabbit.tacocloud.com
+#    port: 5673 #default 5672
+#    username: tacoweb
+#    password: sizam600
+#  profiles:
+#    default: prod
+
+#  rabbitmq:
+#    template:
+#      exchange: tacocloud.order
+#      routing-key: kitchens.central
+#      receive-timeout: 30000
+  kafka:
+    template:
+      default-topic: tacocloud.orders.topic
+    bootstrap-servers:
+      - localhost:9092
+      - localhost:9093
+      - localhost:9094
 
 taco:
   orders:

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="taco_order")
-public class TacoOrder {
+public class TacoOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
