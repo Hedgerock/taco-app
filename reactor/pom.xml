@@ -5,29 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hedgerock.spirng.spring_in_action</groupId>
-    <artifactId>taco_app</artifactId>
+    <artifactId>reactor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>taco_app</name>
-    <description>taco_app</description>
+    <name>reactor</name>
+    <description>reactor</description>
     <url/>
     <licenses>
         <license/>
     </licenses>
-
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>reactor</module>
-        <module>kafka</module>
-        <module>rabbit_mq</module>
-        <module>artemis</module>
-        <module>view_taco_app</module>
-    </modules>
-
     <developers>
         <developer/>
     </developers>
@@ -50,6 +39,38 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-rsocket</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>annotationProcessor</scope>
         </dependency>
     </dependencies>
 

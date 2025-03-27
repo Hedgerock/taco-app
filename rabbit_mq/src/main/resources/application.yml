@@ -1,0 +1,12 @@
+spring:
+  rabbitmq:
+    host: rabbit.tacocloud.com
+    port: 5673 #default 5672
+    username: tacoweb
+    password: sizam600
+    template:
+      exchange: tacocloud.order
+      routing-key: kitchens.central
+      receive-timeout: 30000
+  profiles:
+    default: prod
