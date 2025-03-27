@@ -5,29 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hedgerock.spirng.spring_in_action</groupId>
-    <artifactId>taco_app</artifactId>
+    <artifactId>artemis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>taco_app</name>
-    <description>taco_app</description>
+    <name>artemis</name>
+    <description>artemis</description>
     <url/>
     <licenses>
         <license/>
     </licenses>
-
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>reactor</module>
-        <module>kafka</module>
-        <module>rabbit_mq</module>
-        <module>artemis</module>
-        <module>view_taco_app</module>
-    </modules>
-
     <developers>
         <developer/>
     </developers>
@@ -50,6 +39,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hedgerock.spirng.spring_in_action</groupId>
+            <artifactId>view_taco_app</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
